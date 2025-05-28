@@ -287,19 +287,19 @@ const delay = (time) => {
         }
         // process payment
         await delay(500);
-        await click("#continue");
+        await page.click("#continue");
         await delay(3000);
-        await click("#finish");
+        await page.click("#finish");
         fs.appendFileSync(logFilePath, "Process Payment Complete");
         await delay(1500);
-        await click("#back-to-products");
+        await page.click("#back-to-products");
         //
 
         // Logout
         await delay(1000);
-        await click("#react-burger-menu-btn");
+        await page.click("#react-burger-menu-btn");
         await delay(500);
-        await click("#logout_sidebar_link");
+        await page.click("#logout_sidebar_link");
 
     } catch (error) {
         console.error('Add To Cart Error:', error);
