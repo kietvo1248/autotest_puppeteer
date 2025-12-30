@@ -1,17 +1,19 @@
-const puppeteer = require('puppeteer');
+const puppeteer = require('puppeteer-core'); // Dùng core để trỏ đến trình duyệt có sẵn
 const config = require('./config');
 
 async function launchBrowser() {
+    console.log(`--- Đang khởi tạo trình duyệt: ${config.browserType.toUpperCase()} ---`);
+    
     try {
         const browser = await puppeteer.launch({
+            executablePath: config.executablePath, // Đường dẫn đến Chrome hoặc Edge
             headless: config.headless,
             args: [
                 '--start-maximized',
                 '--no-sandbox',
-                '--disable-setuid-sandbox',
-                `--profile-directory=${config.profileDir}`
+                '--disable-setuid-sandbox'
             ],
-            userDataDir: config.userDataDir // Đưa đường dẫn nhạy cảm vào đây
+            userDataDir: config.userDataDir // Sử dụng profile người dùng tương ứng
         });
 
         const page = await browser.newPage();
@@ -24,7 +26,7 @@ async function launchBrowser() {
 
         return { browser, page };
     } catch (error) {
-        console.error('Không thể mở trình duyệt:', error);
+        console.error(`Lỗi khi khởi tạo ${config.browserType}:`, error.message);
         throw error;
     }
 }
