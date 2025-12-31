@@ -8,7 +8,7 @@ describe('Cross-Browser Test', function() {
         ({ browser, page } = await launchBrowser());
     });
 
-    it('Nên mở trang thành công', async () => {
+    it('Mở trang thành công', async () => {
         await page.goto('https://www.google.com');
     });
 

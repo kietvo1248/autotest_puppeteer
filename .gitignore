@@ -145,3 +145,4 @@ dist
 
 # Puppeteer temp user data
 reports/
+.vscode/

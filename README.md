@@ -2,7 +2,7 @@
 
 A professional, modular automated testing framework built with **Puppeteer**, **Mocha**, and **Chai**. This project implements the **Page Object Model (POM)** pattern to ensure scalability, maintainability, and clean test code.
 
-## 🚀 Features
+## Features
 
 - **Page Object Model (POM):** Decouples test logic from UI selectors for easier maintenance.
 - **Mochawesome Reporting:** Generates beautiful, interactive HTML reports with execution summaries and error details.
@@ -11,19 +11,19 @@ A professional, modular automated testing framework built with **Puppeteer**, **
 - **Robust Profile Management:** Uses temporary blank profiles for each session to avoid conflicts and ensure a clean testing environment.
 - **Auto-Cleanup:** Automatically removes temporary user data directories after tests to save disk space, including retry logic for Windows file-locking issues.
 
-## 🛠 Tech Stack
+## Tech Stack
 
 - **Engine:** [Puppeteer Core](https://pptr.dev/)
 - **Test Runner:** [Mocha](https://mochajs.org/)
 - **Assertion Library:** [Chai](https://www.chaijs.com/)
 - **Reporting:** [Mochawesome](https://github.com/adamgruber/mochawesome)
 
-## 📋 Prerequisites
+## Prerequisites
 
 - [Node.js](https://nodejs.org/) (Version 18 or higher recommended)
 - [npm](https://www.npmjs.com/)
 
-## ⚙️ Installation
+## Installation
 
 1. **Clone the repository:**
    ```bash
@@ -57,26 +57,9 @@ A professional, modular automated testing framework built with **Puppeteer**, **
 
 ## Logging
 
-Results are logged to a file. Modify the log file path in the script.
+Results are logged to a file, open TestReport.html to view detail.
 
-### Example Logs
-
-- **Error:**
-
-    ```
-    Test Case 2: Login failed
-    started at ____, ended at____
-    error:____
-    ```
-
-- **Success:**
-
-    ```
-    Test Case 2: Login successful
-    started at ____, ended at____
-    error:____
-    ```
 
 ## Contact me : kietvo.011203@gmail.com
 
-#### &#169; 2024 KietVo 
+#### &#169; 2024 - 2026 KietVo 
