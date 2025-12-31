@@ -1,3 +1,4 @@
+// src/pages/LoginPage.js
 const BasePage = require('./BasePage');
 
 class LoginPage extends BasePage {
@@ -16,6 +17,8 @@ class LoginPage extends BasePage {
     }
 
     async getErrorMessage() {
+        // Phải đợi selector xuất hiện trước khi eval text (Fix lỗi không tìm thấy element)
+        await this.page.waitForSelector(this.errorMsg);
         return await this.page.$eval(this.errorMsg, el => el.textContent);
     }
 }

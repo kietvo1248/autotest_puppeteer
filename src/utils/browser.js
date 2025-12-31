@@ -46,11 +46,28 @@ async function launchBrowser() {
         executablePath: executablePath,
         headless: config.headless,
         userDataDir: tempUserDataDir,
+        ignoreDefaultArgs: ['--enable-automation'],
         args: [
             '--start-maximized',
             '--no-sandbox',
             '--disable-setuid-sandbox',
-            '--disable-dev-shm-usage'
+            '--disable-dev-shm-usage',
+            '--disable-gpu',
+            '--disable-software-rasterizer',
+            '--disable-extensions',
+            '--remote-debugging-port=9222',
+            '--disable-blink-features=AutomationControlled',
+            '--password-store=basic',
+            '--use-mock-keychain',
+            // Bổ sung các tham số để tắt mọi loại thông báo khác
+            '--disable-infobars',                // Tắt các thanh thông tin (infobars)
+            '--disable-notifications',           // Tắt thông báo đẩy (Push notifications)
+            '--disable-popup-blocking',          // Tắt trình chặn cửa sổ bật lên
+            '--disable-save-password-bubble',    // Tắt thông báo lưu mật khẩu
+            '--disable-autofill-keyboard-accessory-view', // Tắt gợi ý tự động điền
+            '--no-first-run',                    // Bỏ qua các thiết lập lần đầu mở Chrome
+            '--no-default-browser-check',        // Không kiểm tra trình duyệt mặc định
+            '--silent-debugger-extension-api'    // Tắt thông báo "Puppeteer is debugging this tab"
         ]
     });
 
@@ -83,6 +100,10 @@ async function launchBrowser() {
     });
 
     const page = await browser.newPage();
+
+    await page.evaluateOnNewDocument(() => {
+        Object.defineProperty(navigator, 'webdriver', { get: () => undefined });
+    });
 
     const { width, height } = await page.evaluate(() => ({
         width: window.screen.width,

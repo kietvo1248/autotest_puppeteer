@@ -7,13 +7,13 @@ class InventoryPage extends BasePage {
         this.cartLink = '.shopping_cart_link';
     }
 
-    async addItem(itemName) {
-        const selector = `#add-to-cart-${itemName}`;
+    async addItem(productName) {
+        const selector = `#add-to-cart-${productName}`; 
         await this.waitAndClick(selector);
     }
 
-    async removeItem(itemName) {
-        const selector = `#remove-${itemName}`;
+    async removeItem(productName) {
+        const selector = `#remove-${productName}`;
         await this.waitAndClick(selector);
     }
 

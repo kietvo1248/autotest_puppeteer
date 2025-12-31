@@ -13,6 +13,8 @@ describe('Cross-Browser Test', function() {
     });
 
     after(async () => {
-        await browser.close();
+        if (browser) {
+            await browser.close();
+        }
     });
 });
