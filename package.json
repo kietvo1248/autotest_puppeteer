@@ -9,6 +9,7 @@
   "saucedemo": "mocha src/tests/saucedemo.test.js --reporter mochawesome --reporter-options reportDir=reports,reportFilename=SaucedemoReport,overwrite=true",
   "example": "mocha src/tests/example.test.js --reporter mochawesome --reporter-options reportDir=reports,reportFilename=ExampleReport,overwrite=true",
   "orange": "mocha src/tests/orangeHMR.test.js --reporter mochawesome --reporter-options reportDir=reports,reportFilename=orangeHMRReport,overwrite=true",
+  "automationexercise": "mocha src/tests/automationexercise.test.js --reporter mochawesome --reporter-options reportDir=reports,reportFilename=AutomationExerciseReport,overwrite=true",
   "test:file": "mocha"
 },
   "keywords": [],

@@ -22,5 +22,14 @@ class BasePage {
         await this.page.keyboard.press('Backspace');
         await this.page.type(selector, text, { delay: 70 }); // Tăng delay gõ phím để trông thật hơn
     }
+    async waitAndSelect(selector, value) { // thêm hàm chọn dropdown
+        await this.page.waitForSelector(selector, { timeout: 30000 });
+        await this.pause(500); 
+        await this.page.select(selector, value);
+    }
+    async waitAndGetText(selector) {
+        await this.page.waitForSelector(selector, { timeout: 30000 });
+        return await this.page.$eval(selector, el => el.textContent);
+    }
 }
 module.exports = BasePage;
