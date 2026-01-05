@@ -5,16 +5,16 @@
 const BasePage = require("../pages/BasePage");
 const { expect } = require("chai");
 const { launchBrowser } = require("../utils/browser");
-const RegisterPage = require("../pages/automationexercise/resgisterPage");
+const AuthenticatePage = require("../pages/automationexercise/authenticatePage");
 const data = require("../../Data/data_automationexercise");
 const basePage = "https://automationexercise.com/";
 
 describe("Quy trình đăng ký và xóa tài khoản trên Automation Exercise",  async function () {
   this.timeout(60000);
-  let browser, page, registerPage; 
+  let browser, page, authenticatePage; 
     before(async () => {
         ({ browser, page } = await launchBrowser());
-        registerPage = new RegisterPage(page);
+        authenticatePage = new AuthenticatePage(page);
     });
 
     after(async () => {
@@ -25,25 +25,52 @@ describe("Quy trình đăng ký và xóa tài khoản trên Automation Exercise"
     it("TC01: Đăng ký tài khoản mới và xóa tài khoản", async () => {
         // 1. Launch browser
         // 2. Navigate to url 'http://automationexercise.com'
-        await registerPage.navigate(basePage);
+        await authenticatePage.navigate(basePage);
         // 3. Verify that home page is visible successfully
         // expect(page.url()).to.equal("https://automationexercise.com/");
         // 4. Click on 'Signup / Login' button
-        await registerPage.waitAndClick("a[href='/login']");
+        await authenticatePage.waitAndClick("a[href='/login']");
         // 5. Fill all details in Signup and create account
-        await registerPage.register(data);
+        await authenticatePage.register(data);
         // 6. Verify 'ACCOUNT CREATED!' and click 'Continue' button
-        let message = await registerPage.getMessage();
+        let message = await authenticatePage.getMessage();
         expect(message).to.include("Account Created!");
-        await registerPage.clickContinue();
+        await authenticatePage.clickContinue();
         // 7. Verify 'Logged in as username' at top
-        message = await registerPage.getWelcomeMessage();
+        message = await authenticatePage.getWelcomeMessage();
         expect(message).to.include(`Logged in as ${data.name}`);
         // 8. Delete account and verify 'ACCOUNT DELETED!'
-        await registerPage.deleteAccount();
-        message = await registerPage.getMessage();
+        await authenticatePage.deleteAccount();
+        message = await authenticatePage.getMessage();
         expect(message).to.include("Account Deleted!");
         console.log("--- Đăng ký và xóa tài khoản thành công! ---");
+    });
+
+    it("TC02: Đăng ký và đăng nhập", async () => {
+        await authenticatePage.navigate(basePage);
+        // 3. Verify that home page is visible successfully
+        // expect(page.url()).to.equal("https://automationexercise.com/");
+        // 4. Click on 'Signup / Login' button
+        await authenticatePage.waitAndClick("a[href='/login']");
+        // 5. Fill all details in Signup and create account
+        await authenticatePage.register(data);
+        // 6. Verify 'ACCOUNT CREATED!' and click 'Continue' button
+        let message = await authenticatePage.getMessage();
+        expect(message).to.include("Account Created!");
+        await authenticatePage.clickContinue();
+        // 7. Verify 'Logged in as username' at top
+        message = await authenticatePage.getWelcomeMessage();
+        expect(message).to.include(`Logged in as ${data.name}`);
+        // 8. Logout
+        await authenticatePage.waitAndClick("a[href='/logout']");
+        // 9. Login again with the created account
+        await authenticatePage.login(data.email, data.password);
+        // 10. Verify 'Logged in as username' at top
+        message = await authenticatePage.getWelcomeMessage();
+        expect(message).to.include(`Logged in as ${data.name}`);
+
+        // cleanup: delete account
+        await authenticatePage.deleteAccount();
     });
 });
 

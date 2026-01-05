@@ -28,8 +28,12 @@ class RegisterPage extends BasePage {
     //message
     this.message = "h2[class='title text-center'] b";
     this.continueButton = ".btn.btn-primary";
-    //...
+    //welcome message
     this.welcomeMessage = "li:nth-child(10) a:nth-child(1)";
+    //login
+    this.loginEmailBox = "input[data-qa='login-email']";
+    this.loginPasswordBox = "input[placeholder='Password']";
+    this.loginButton = "button[data-qa='login-button']";
   }
 
   async register(userData) {
@@ -70,6 +74,15 @@ class RegisterPage extends BasePage {
   }
   async getWelcomeMessage() {
     return await this.waitAndGetText(this.welcomeMessage);
+  }
+
+  async login(username, password) {
+    await this.waitAndType(this.loginEmailBox, username);
+    await this.waitAndType(this.loginPasswordBox, password);
+    await Promise.all([
+      this.page.waitForNavigation({ waitUntil: 'networkidle2' }),
+      this.page.click(this.loginButton)
+    ]);
   }
 }
 
