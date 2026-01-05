@@ -1,8 +1,8 @@
 const { expect } = require("chai");
 const { launchBrowser } = require("../utils/browser");
-const LoginPage = require("../pages/LoginPage");
-const InventoryPage = require("../pages/InventoryPage");
-const CheckoutPage = require("../pages/CheckOutPage");
+const LoginPage = require("../pages/saucedemo/LoginPage");
+const InventoryPage = require("../pages/saucedemo/InventoryPage");
+const CheckoutPage = require("../pages/saucedemo/CheckOutPage");
 const data = require("../../Data/data_saucedemo");
 
 describe("Quy trình mua hàng Saucedemo (E2E)", function () {

@@ -6,8 +6,10 @@
   "scripts": {
   "verify": "node src/tests/verify_browser.js",
   "test": "mocha src/tests/*.test.js --reporter mochawesome --reporter-options reportDir=reports,reportFilename=TestReport,overwrite=true",
-  "test:single": "mocha",
-  "old-run": "node Test/test_saucedemo.js"
+  "saucedemo": "mocha src/tests/saucedemo.test.js --reporter mochawesome --reporter-options reportDir=reports,reportFilename=SaucedemoReport,overwrite=true",
+  "example": "mocha src/tests/example.test.js --reporter mochawesome --reporter-options reportDir=reports,reportFilename=ExampleReport,overwrite=true",
+  "orange": "mocha src/tests/orangeHMR.test.js --reporter mochawesome --reporter-options reportDir=reports,reportFilename=orangeHMRReport,overwrite=true",
+  "test:file": "mocha"
 },
   "keywords": [],
   "author": "",

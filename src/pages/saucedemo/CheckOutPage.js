@@ -1,5 +1,5 @@
 // src/pages/CheckOutPage.js
-const BasePage = require('./BasePage');
+const BasePage = require('../BasePage');
 
 class CheckOutPage extends BasePage {
     constructor(page) {

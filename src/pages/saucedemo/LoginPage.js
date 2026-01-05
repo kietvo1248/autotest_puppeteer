@@ -1,5 +1,5 @@
 // src/pages/LoginPage.js
-const BasePage = require('./BasePage');
+const BasePage = require('../BasePage');
 
 class LoginPage extends BasePage {
     constructor(page) {
@@ -15,7 +15,7 @@ class LoginPage extends BasePage {
         await this.waitAndType(this.passwordBox, password);
         await this.waitAndClick(this.loginButton);
     }
-
+    
     async getErrorMessage() {
         // Phải đợi selector xuất hiện trước khi eval text (Fix lỗi không tìm thấy element)
         await this.page.waitForSelector(this.errorMsg);
