@@ -1,6 +1,7 @@
 const data_automationexercise = {
-    name: "TestUser",
-    email: "User" + Date.now() + "@test.com",
+    fakeName: "TestUser",
+    fakeEmail: "User" + Date.now() + "@test.com",
+    email: "kietvo500@gmail.com", // account available
     password: "123456", 
     day: "10",
     month: "May",

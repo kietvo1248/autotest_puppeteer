@@ -38,8 +38,8 @@ class RegisterPage extends BasePage {
 
   async register(userData) {
     await this.waitAndClick(this.userNameBox);
-    await this.waitAndType(this.userNameBox, userData.name);
-    await this.waitAndType(this.emailBox, userData.email);
+    await this.waitAndType(this.userNameBox, userData.fakeName);
+    await this.waitAndType(this.emailBox, userData.fakeEmail);
     await this.waitAndClick(this.signupButton);
     await this.waitAndClick(this.genderRadio);
     await this.waitAndType(this.passwordBox, userData.password);
@@ -106,3 +106,15 @@ module.exports = RegisterPage;
 // 16. Verify that 'Logged in as username' is visible
 // 17. Click 'Delete Account' button
 // 18. Verify that 'ACCOUNT DELETED!' is visible and click 'Continue' button
+
+
+// 1. Launch browser
+// 2. Navigate to url 'http://automationexercise.com'
+// 3. Verify that home page is visible successfully
+// 4. Click on 'Signup / Login' button
+// 5. Verify 'Login to your account' is visible
+// 6. Enter correct email address and password
+// 7. Click 'login' button
+// 8. Verify that 'Logged in as username' is visible
+// 9. Click 'Delete Account' button
+// 10. Verify that 'ACCOUNT DELETED!' is visible

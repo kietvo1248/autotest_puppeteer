@@ -2,6 +2,12 @@
 // Test Case: https://automationexercise.com/test_cases
 // API list: https://automationexercise.com/api_list
 
+//TC01: Đăng ký tài khoản mới và xóa tài khoản
+//TC02: Đăng ký và đăng nhập
+//TC03: Xem $ search tên sản phẩm
+//TC04: khách hàng đăng nhập tạo Thêm sản phẩm vào giỏ hàng và thanh toán
+
+
 const BasePage = require("../pages/BasePage");
 const { expect } = require("chai");
 const { launchBrowser } = require("../utils/browser");
@@ -64,7 +70,7 @@ describe("Quy trình đăng ký và xóa tài khoản trên Automation Exercise"
         // 8. Logout
         await authenticatePage.waitAndClick("a[href='/logout']");
         // 9. Login again with the created account
-        await authenticatePage.login(data.email, data.password);
+        await authenticatePage.login(data.fakeEmail, data.password);
         // 10. Verify 'Logged in as username' at top
         message = await authenticatePage.getWelcomeMessage();
         expect(message).to.include(`Logged in as ${data.name}`);
